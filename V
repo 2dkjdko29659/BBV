@@ -1,0 +1,47 @@
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "hamza_tv";
+
+// إنشاء الاتصال
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// التحقق من الاتصال
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// تعيين ترميز الأحرف
+mysqli_set_charset($conn, "utf8mb4");
+
+// دالة لتحويل التاريخ إلى "منذ x وقت"
+function time_ago($datetime) {
+    $now = new DateTime;
+    $ago = new DateTime($datetime);
+    $diff = $now->diff($ago);
+
+    $diff->w = floor($diff->d / 7);
+    $diff->d -= $diff->w * 7;
+
+    $string = array(
+        'y' => 'سنة',
+        'm' => 'شهر',
+        'w' => 'أسبوع',
+        'd' => 'يوم',
+        'h' => 'ساعة',
+        'i' => 'دقيقة',
+        's' => 'ثانية',
+    );
+    
+    foreach ($string as $k => &$v) {
+        if ($diff->$k) {
+            $v = $diff->$k . ' ' . $v;
+        } else {
+            unset($string[$k]);
+        }
+    }
+
+    return $string ? 'منذ ' . implode(', ', $string) : 'الآن';
+}
+?>
