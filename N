@@ -1,0 +1,35 @@
+/* CSS الرئيسي */
+:root {
+    --primary-color: #FF5722;
+    --secondary-color: #795548;
+    --accent-color: #FFC107;
+    --dark-color: #333;
+    --light-color: #f5f5f5;
+    --text-color: #333;
+    --light-text: #777;
+    --success-color: #4CAF50;
+    --danger-color: #F44336;
+    --warning-color: #FF9800;
+    --info-color: #2196F3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: var(--light-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* أنماط أخرى للتصميم... */
